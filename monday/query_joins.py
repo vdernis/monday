@@ -85,10 +85,10 @@ def get_item_query(board_id, column_id, value):
     return query
 
 
-def get_item_by_id_query(ids):
+def get_item_by_id_query(**kwargs):
     query = '''query
         {
-            items (ids: %s) {
+            items (%s) {
                 name,
                 group {
                     id
@@ -100,7 +100,7 @@ def get_item_by_id_query(ids):
                     value
                 }
             }
-        }''' % ids
+        }''' % ', '.join(["%s: %s" % (arg, kwargs.get(arg)) for arg in kwargs])
 
     return query
 

@@ -23,8 +23,8 @@ class ItemResource(BaseResource):
         query = get_item_query(board_id, column_id, value)
         return self.client.execute(query)
 
-    def fetch_items_by_id(self, ids):
-        query = get_item_by_id_query(ids)
+    def fetch_items_by_id(self, **kwargs):
+        query = get_item_by_id_query(**kwargs)
         return self.client.execute(query)
 
     def change_item_value(self, board_id, item_id, column_id, value):
