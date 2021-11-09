@@ -62,7 +62,8 @@ def get_item_query(board_id, column_id, value):
             items_by_column_values(
                 board_id: %s,
                 column_id: %s,
-                column_value: "%s"
+                column_value: "%s",
+                limit:50
             ) {
                 id
                 name
