@@ -63,7 +63,7 @@ def get_item_query(board_id, column_id, value):
                 board_id: %s,
                 column_id: %s,
                 column_value: "%s",
-                limit:50
+                limit:200
             ) {
                 id
                 name
