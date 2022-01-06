@@ -261,6 +261,23 @@ def get_tags_query(tags):
 
 
 # BOARD RESOURCE QUERIES
+def get_board_item_ids_query(board_id):
+    query = '''query
+    {
+        boards(ids: %s) {
+            name
+            items (limit:200) {
+                
+                id
+                name
+                
+            }
+        }
+    }''' % board_id
+
+    return query
+
+
 def get_board_items_query(board_id):
     query = '''query
     {
