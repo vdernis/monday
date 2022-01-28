@@ -105,6 +105,30 @@ def get_item_by_id_query(**kwargs):
 
     return query
 
+def get_item_by_id_with_assets_query(**kwargs):
+    query = '''query
+        {
+            items (%s) {
+                name,
+                assets {
+                    id
+                    public_url
+                    name
+                }
+                group {
+                    id
+                    title
+                }
+                column_values {
+                    id,
+                    text,
+                    value
+                }
+            }
+        }''' % ', '.join(["%s: %s" % (arg, kwargs.get(arg)) for arg in kwargs])
+
+    return query
+
 
 def update_item_query(board_id, item_id, column_id, value):
     query = '''mutation
