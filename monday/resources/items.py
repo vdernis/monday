@@ -1,7 +1,7 @@
 from monday.resources.base import BaseResource
 from monday.query_joins import mutate_item_query, get_item_query, update_item_query, get_item_by_id_query, \
     update_multiple_column_values_query, mutate_subitem_query, add_file_to_column_query, delete_item_query, \
-    get_item_by_id_with_assets_query
+    get_item_by_id_with_assets_query, mutate_move_item_to_group
 
 
 class ItemResource(BaseResource):
@@ -27,12 +27,17 @@ class ItemResource(BaseResource):
     def fetch_items_by_id(self, **kwargs):
         query = get_item_by_id_query(**kwargs)
         return self.client.execute(query)
+
     def fetch_items_with_assets_by_id(self, **kwargs):
         query = get_item_by_id_with_assets_query(**kwargs)
         return self.client.execute(query)
 
     def change_item_value(self, board_id, item_id, column_id, value):
         query = update_item_query(board_id, item_id, column_id, value)
+        return self.client.execute(query)
+    
+    def change_item_group(self, item_id, group_id):
+        query = mutate_move_item_to_group(item_id, group_id)
         return self.client.execute(query)
 
     def change_multiple_column_values(self, board_id, item_id, column_values):

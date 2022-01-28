@@ -28,6 +28,18 @@ def mutate_item_query(board_id, group_id, item_name, column_values,
 
     return query
 
+def mutate_move_item_to_group(item_id, group_id):
+    """
+    """
+
+    query = '''mutation {
+        move_item_to_group (item_id: %s, group_id: %s) {
+            id
+        }
+    }
+    ''' % (item_id, group_id)
+
+    return query
 
 def mutate_subitem_query(parent_item_id, subitem_name, column_values,
                          create_labels_if_missing):
