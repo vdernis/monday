@@ -534,4 +534,5 @@ def create_column_query(board_id, title, description, column_type):
         }
     }
     ''' % (board_id, title, description, column_type, )
+    print(query)
     return query
