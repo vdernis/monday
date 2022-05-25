@@ -527,7 +527,7 @@ def get_complexity_query():
 def create_column_query(board_id, title, description, column_type):
     query = '''
     mutation{
-        create_column(board_id: %s, title:%s, description: "%s", column_type:%s) {
+        create_column(board_id: %s, title:"%s", description: "%s", column_type:%s) {
             id
             title
             description
