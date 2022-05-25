@@ -522,3 +522,16 @@ def get_complexity_query():
     }'''
 
     return query
+
+## COLUMN RESOURCE QUERIES
+def create_column_query(board_id, title, description, column_type):
+    query = '''
+    mutation{
+        create_column(board_id: %s, title:%s, description: "%s", column_type:%s) {
+            id
+            title
+            description
+        }
+    }
+    ''' % (board_id, title, description, column_type, )
+    return query
