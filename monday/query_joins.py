@@ -107,6 +107,9 @@ def get_item_by_id_query(**kwargs):
                     id
                     title
                 }
+                board {
+                    id
+                }
                 column_values {
                     id,
                     text,
