@@ -3,7 +3,7 @@ import json
 from monday.utils import monday_json_stringify
 
 
-# Eventually I will organize this file better but you know what today is not that day.
+# Eventually I will organize this file better but you know what toget_items_by_group_queryday is not that day.
 
 # ITEM RESOURCE QUERIES
 def mutate_item_query(board_id, group_id, item_name, column_values,
@@ -454,7 +454,7 @@ def get_items_by_group_query(board_id, group_id):
             groups(ids: "%s") {
                 id
                 title
-                items_page{
+                items_page {
                     items {
                         id
                         name
