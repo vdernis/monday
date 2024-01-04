@@ -40,8 +40,6 @@ def mutate_move_item_to_group(item_id, group_id):
 
     ''' % (item_id, group_id)
 
-    print(query)
-
     return query
 
 def mutate_subitem_query(parent_item_id, subitem_name, column_values,
