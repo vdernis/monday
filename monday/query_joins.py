@@ -37,7 +37,10 @@ def mutate_move_item_to_group(item_id, group_id):
             id
         }
     }
+
     ''' % (item_id, group_id)
+
+    print(query)
 
     return query
 
