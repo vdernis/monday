@@ -306,11 +306,11 @@ def get_board_item_ids_query(board_id):
     {
         boards(ids: %s) {
             name
-            items (limit:200) {
-                
-                id
-                name
-                
+            items_page(limit:200){
+                items {
+                    id
+                    name
+                }
             }
         }
     }''' % board_id
