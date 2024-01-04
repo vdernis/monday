@@ -323,7 +323,7 @@ def get_board_items_query(board_id):
     {
         boards(ids: %s) {
             name
-            items_page{
+            items_page (limit:500){
                 items {
                     group {
                         id
