@@ -20,6 +20,7 @@ class GraphQLClient:
         headers = {}
         files = None
 
+        headers["apiVersion"] = "2023-10"
         if self.token is not None:
             headers[self.headername] = '{}'.format(self.token)
 
