@@ -322,18 +322,20 @@ def get_board_items_query(board_id):
     {
         boards(ids: %s) {
             name
-            items {
-                group {
+            items_page{
+                items {
+                    group {
+                        id
+                        title
+                    }
                     id
-                    title
-                }
-                id
-                name
-                column_values {
-                  id
-                  text
-                  type
-                  value
+                    name
+                    column_values {
+                    id
+                    text
+                    type
+                    value
+                    }
                 }
             }
         }
