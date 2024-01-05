@@ -88,6 +88,9 @@ def get_item_query(board_id, column_id, value):
                         id
                         text
                         value
+                        ...on MirrorValue {
+                            display_value
+                        }
                     }
                 }
             }
