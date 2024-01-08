@@ -72,7 +72,7 @@ def mutate_subitem_query(parent_item_id, subitem_name, column_values,
 def get_item_query(board_id, column_id, value):
     query = '''query
         {
-            items_page_by_column_values (limit: 200, board_id:  %s, columns: [{column_id: "%s", column_values: ["%s"]}]) {
+            items_page_by_column_values (limit: 500, board_id:  %s, columns: [{column_id: "%s", column_values: ["%s"]}]) {
                 items{
                     id
                     name
