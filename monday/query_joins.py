@@ -91,7 +91,7 @@ def get_item_query(board_id, column_id, value):
                         ...on MirrorValue {
                             display_value
                         }
-                        .. on LastUpdatedValue {
+                        ... on LastUpdatedValue {
                             updated_at
                             value
                         }
