@@ -152,7 +152,7 @@ def update_item_query(board_id, item_id, column_id, value):
             change_column_value(
                 board_id: %s,
                 item_id: %s,
-                column_id: %s,
+                column_id: "%s",
                 value: %s
             ) {
                 id
