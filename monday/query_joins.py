@@ -92,7 +92,7 @@ def get_item_query(board_id, column_id, value):
                             display_value
                         }
                         ... on LastUpdatedValue {
-                            updated_at
+                            last_updated_at:updated_at
                             text
                         }
                     }
