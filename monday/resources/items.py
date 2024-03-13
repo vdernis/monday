@@ -1,7 +1,7 @@
 from monday.resources.base import BaseResource
 from monday.query_joins import mutate_item_query, get_item_query, update_item_query, get_item_by_id_query, \
     update_multiple_column_values_query, mutate_subitem_query, add_file_to_column_query, delete_item_query, \
-    get_item_by_id_with_assets_query, mutate_move_item_to_group
+    get_item_by_id_with_assets_query, mutate_move_item_to_group, get_next_page_query
 
 
 class ItemResource(BaseResource):
@@ -50,4 +50,8 @@ class ItemResource(BaseResource):
     
     def delete_item_by_id(self, item_id):
         query = delete_item_query(item_id)
+        return self.client.execute(query)
+    
+    def get_next_page(self, cursor):
+        query = get_next_page_query(cursor)
         return self.client.execute(query)

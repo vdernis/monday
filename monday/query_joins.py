@@ -453,6 +453,24 @@ def get_groups_by_board_query(board_ids):
     }''' % board_ids
     return query
 
+def get_next_page_query(cursor):
+    '''
+    '''
+    
+    query = '''
+    query {  
+        next_items_page (limit: 50, cursor: "'''+cursor+'''") {  
+            cursor  
+            items {  
+                id  
+                name  
+            }  
+        }  
+    }
+    '''
+
+    return query
+
 
 def get_items_by_group_query(board_id, group_id):
     query = '''query
@@ -461,6 +479,7 @@ def get_items_by_group_query(board_id, group_id):
             groups(ids: "%s") {
                 id
                 title
+                cursor
                 items_page(limit: 500) {
                     items {
                         id
