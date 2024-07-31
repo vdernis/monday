@@ -107,6 +107,7 @@ def get_item_by_id_query(**kwargs):
     query = '''query
         {
             items (%s) {
+                id,
                 name,
                 group {
                     id
