@@ -68,7 +68,6 @@ def mutate_subitem_query(parent_item_id, subitem_name, column_values,
     }''' % (parent_item_id, subitem_name, monday_json_stringify(column_values),
             str(create_labels_if_missing).lower())
 
-
 def get_item_query(board_id, column_id, value):
     query = '''query
         {
@@ -93,6 +92,47 @@ def get_item_query(board_id, column_id, value):
                         }
                         ... on LastUpdatedValue {
                             last_updated_at:updated_at
+                            text
+                        }
+                    }
+                }
+            }
+        }''' % (board_id, column_id, value)
+
+    return query
+
+
+def get_item_with_subitems_query(board_id, column_id, value):
+    query = '''query
+        {
+            items_page_by_column_values (limit: 500, board_id:  %s, columns: [{column_id: "%s", column_values: ["%s"]}]) {
+                items{
+                    id
+                    name
+                    updates {
+                        id
+                        body
+                    }
+                    group {
+                        id
+                        title
+                    }
+                    column_values {
+                        id
+                        text
+                        value
+                        ...on MirrorValue {
+                            display_value
+                        }
+                        ... on LastUpdatedValue {
+                            last_updated_at:updated_at
+                            text
+                        }
+                    }
+                    subitems {
+                        id
+                        column_values {
+                            value
                             text
                         }
                     }
