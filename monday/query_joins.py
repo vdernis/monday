@@ -136,6 +136,9 @@ def get_item_with_subitems_query(board_id, column_id, value):
                             value
                             text
                         }
+                        board {
+                            id
+                        }
                     }
                 }
             }
