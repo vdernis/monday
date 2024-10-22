@@ -72,6 +72,7 @@ def get_item_query(board_id, column_id, value):
     query = '''query
         {
             items_page_by_column_values (limit: 500, board_id:  %s, columns: [{column_id: "%s", column_values: ["%s"]}]) {
+                cursor
                 items{
                     id
                     name
@@ -100,6 +101,8 @@ def get_item_query(board_id, column_id, value):
         }''' % (board_id, column_id, value)
 
     return query
+
+
 
 
 def get_item_with_subitems_query(board_id, column_id, value):
@@ -515,6 +518,42 @@ def get_next_page_query(cursor):
     '''
 
     return query
+
+
+def get_item_next_page_query(cursor):
+    query = '''query
+        {
+            next_items_page (limit: 500, cursor: "'''+cursor+'''") { 
+                cursor
+                items{
+                    id
+                    name
+                    updates {
+                        id
+                        body
+                    }
+                    group {
+                        id
+                        title
+                    }
+                    column_values {
+                        id
+                        text
+                        value
+                        ...on MirrorValue {
+                            display_value
+                        }
+                        ... on LastUpdatedValue {
+                            last_updated_at:updated_at
+                            text
+                        }
+                    }
+                }
+            }
+        }'''
+
+    return query
+
 
 
 def get_items_by_group_query(board_id, group_id):
