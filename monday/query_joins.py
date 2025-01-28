@@ -119,6 +119,11 @@ def get_item_query_with_assets(board_id, column_id, value):
                         id
                         title
                     }
+                    assets {
+                        id
+                        public_url
+                        name
+                    }
                     column_values {
                         id
                         text
