@@ -103,6 +103,41 @@ def get_item_query(board_id, column_id, value):
     return query
 
 
+def get_item_query_with_assets(board_id, column_id, value):
+    query = '''query
+        {
+            items_page_by_column_values (limit: 500, board_id:  %s, columns: [{column_id: "%s", column_values: ["%s"]}]) {
+                cursor
+                items{
+                    id
+                    name
+                    updates {
+                        id
+                        body
+                    }
+                    group {
+                        id
+                        title
+                    }
+                    column_values {
+                        id
+                        text
+                        value
+                        ...on MirrorValue {
+                            display_value
+                        }
+                        ... on LastUpdatedValue {
+                            last_updated_at:updated_at
+                            text
+                        }
+                    }
+                }
+            }
+        }''' % (board_id, column_id, value)
+
+    return query
+
+
 
 
 def get_item_with_subitems_query(board_id, column_id, value):

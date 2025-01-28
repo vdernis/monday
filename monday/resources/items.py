@@ -1,5 +1,5 @@
 from monday.resources.base import BaseResource
-from monday.query_joins import mutate_item_query, get_item_query, update_item_query, get_item_by_id_query, \
+from monday.query_joins import mutate_item_query, get_item_query, get_item_query_with_assets, update_item_query, get_item_by_id_query, \
     update_multiple_column_values_query, mutate_subitem_query, add_file_to_column_query, delete_item_query, \
     get_item_by_id_with_assets_query, mutate_move_item_to_group, get_next_page_query, get_item_with_subitems_query, get_item_next_page_query
 
@@ -22,6 +22,10 @@ class ItemResource(BaseResource):
 
     def fetch_items_by_column_value(self, board_id, column_id, value):
         query = get_item_query(board_id, column_id, value)
+        return self.client.execute(query)
+    
+    def fetch_items_by_column_value_with_assets(self, board_id, column_id, value):
+        query = get_item_query_with_assets(board_id, column_id, value)
         return self.client.execute(query)
     
     def fetch_items_by_column_value_next_page(self, cursor):
