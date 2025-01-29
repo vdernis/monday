@@ -58,8 +58,6 @@ class ItemResource(BaseResource):
 
     def add_file_to_column(self, item_id, column_id, file):
         query = add_file_to_column_query(item_id, column_id)
-        print(query)
-        print({'file': file})
         return self.file_upload_client.execute(query, variables={'file': file})
     
     def delete_item_by_id(self, item_id):
