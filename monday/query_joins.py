@@ -297,7 +297,7 @@ def add_file_to_column_query(item_id, column_id):
         add_file_to_column (
             file: $file,
             item_id: %s,
-            column_id: %s
+            column_id: '%s'
         ) {
             id
         }
