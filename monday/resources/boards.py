@@ -1,6 +1,6 @@
 from monday.resources.base import BaseResource
 from monday.query_joins import get_boards_query, get_boards_by_id_query, get_board_items_query, \
-    get_columns_by_board_query, get_board_item_ids_query
+    get_columns_by_board_query, get_board_item_ids_query, get_board_items_query_with_cursor
 
 
 class BoardResource(BaseResource):
@@ -17,6 +17,10 @@ class BoardResource(BaseResource):
 
     def fetch_items_by_board_id(self, board_ids):
         query = get_board_items_query(board_ids)
+        return self.client.execute(query)
+    
+    def fetch_items_by_board_id_with_cursor(self, board_ids):
+        query = get_board_items_query_with_cursor(board_ids)
         return self.client.execute(query)
 
     def fetch_item_ids_by_board_id(self, board_ids):

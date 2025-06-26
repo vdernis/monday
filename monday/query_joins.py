@@ -436,6 +436,33 @@ def get_board_items_query(board_id):
 
     return query
 
+def get_board_items_query_with_cursor(board_id):
+    query = '''query
+    {
+        boards(ids: %s) {
+            name
+            items_page (limit:100){
+            cursor
+            items {
+                    group {
+                        id
+                        title
+                    }
+                    id
+                    name
+                    column_values {
+                    id
+                    text
+                    type
+                    value
+                    }
+                }
+            }
+        }
+    }''' % board_id
+
+    return query
+
 
 def get_boards_query(**kwargs):
     query = '''query
