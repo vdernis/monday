@@ -95,6 +95,9 @@ def get_item_query(board_id, column_id, value):
                             last_updated_at:updated_at
                             text
                         }
+                        ... on BoardRelationValue {
+                            display_value
+                        }
                     }
                 }
             }
@@ -135,6 +138,9 @@ def get_item_query_with_assets(board_id, column_id, value):
                             last_updated_at:updated_at
                             text
                         }
+                        ... on BoardRelationValue {
+                            display_value
+                        }
                     }
                 }
             }
@@ -170,6 +176,9 @@ def get_item_with_subitems_query(board_id, column_id, value):
                         ... on LastUpdatedValue {
                             last_updated_at:updated_at
                             text
+                        }
+                        ... on BoardRelationValue {
+                            display_value
                         }
                     }
                     subitems {
@@ -613,6 +622,9 @@ def get_item_next_page_query(cursor):
                         ... on LastUpdatedValue {
                             last_updated_at:updated_at
                             text
+                        }
+                        ... on BoardRelationValue {
+                            display_value
                         }
                     }
                 }
