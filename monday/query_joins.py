@@ -202,7 +202,7 @@ def get_item_with_subitems_query(board_id, column_id, value):
 def get_item_by_id_query(**kwargs):
     query = '''query
         {
-            items (%s) {
+            items (%s limit: 100) {
                 id,
                 name,
                 group {
