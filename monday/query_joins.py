@@ -97,6 +97,11 @@ def get_item_query(board_id, column_id, value):
                         }
                         ... on BoardRelationValue {
                             display_value
+                            linked_item_ids  
+                            linked_items {  
+                                name  
+                                updated_at  
+                            }
                         }
                     }
                      subitems {
