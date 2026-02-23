@@ -99,19 +99,20 @@ def get_item_query(board_id, column_id, value):
                             display_value
                         }
                     }
-                }
-                subitems {
-                    id
-                    column_values {
-                        column {
-                            id
-                            title
-                        }
+                     subitems {
                         id
-                        value
-                        text
+                        column_values {
+                            column {
+                                id
+                                title
+                            }
+                            id
+                            value
+                            text
+                        }
                     }
                 }
+               
             }
         }''' % (board_id, column_id, value)
 
