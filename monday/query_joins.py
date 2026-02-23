@@ -216,6 +216,13 @@ def get_item_by_id_query(**kwargs):
                     id,
                     text,
                     value
+                    ... on BoardRelationValue {  
+                        linked_item_ids  
+                        linked_items {  
+                            name  
+                            updated_at  
+                        }
+                    }
                 }
             }
         }''' % ', '.join(["%s: %s" % (arg, kwargs.get(arg)) for arg in kwargs])
