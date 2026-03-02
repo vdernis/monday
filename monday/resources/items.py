@@ -29,7 +29,7 @@ class ItemResource(BaseResource):
         return self.client.execute(query)
     
     def fetch_basic_items_by_column_value(self, board_id, column_id, value):
-        query = get_item_query(board_id, column_id, value)
+        query = get_basic_item_query(board_id, column_id, value)
         return self.client.execute(query)
     
     def fetch_items_by_column_value_next_page(self, cursor):

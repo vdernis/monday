@@ -131,14 +131,6 @@ def get_basic_item_query(board_id, column_id, value):
                 items{
                     id
                     name
-                    updates {
-                        id
-                        body
-                    }
-                    group {
-                        id
-                        title
-                    }
                     column_values {
                         id
                         text
