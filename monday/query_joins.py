@@ -126,7 +126,7 @@ def get_item_query(board_id, column_id, value):
 def get_basic_item_query(board_id, column_id, value):
     query = '''query
         {
-            items_page_by_column_values (limit: 500, board_id:  %s, columns: [{column_id: "%s", column_values: ["%s"]}]) {
+            items_page_by_column_values (limit: 1, board_id:  %s, columns: [{column_id: "%s", column_values: ["%s"]}]) {
                 cursor
                 items{
                     id
